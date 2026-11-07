@@ -1,4 +1,4 @@
-// Builds index.html from _src/index.src.html + _src/art.mjs. Run: node _src/build.mjs
+﻿// Builds index.html from _src/index.src.html + _src/art.mjs. Run: node _src/build.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '1';
+const V = '2';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -45,9 +45,9 @@ const igFeed = IG_POSTS.map(p => {
 }).join('\n    ');
 
 const person = {
-  '@type': 'Person', '@id': SITE + '#victoria', name: 'Victoria Rebecca Adam', jobTitle: 'Artist',
+  '@type': 'Person', '@id': SITE + '#rebecca', name: 'Rebecca Adam', jobTitle: 'Artist',
   description: 'Local Ontario artist and Registered Aesthetic Nurse creating one-of-a-kind art from clay, resin, wood and mosaic.',
-  url: SITE, image: SITE + 'assets/img/art/victoria-with-fellow-artists.webp',
+  url: SITE, image: SITE + 'assets/img/art/rebecca-adam-with-fellow-artists.webp',
   address: { '@type': 'PostalAddress', addressRegion: 'ON', addressCountry: 'CA' },
   knowsAbout: ['Floral painting', 'Mosaic', 'Ceramics', 'Resin art', 'Wood art', 'Mixed media sculpture', 'Judaica'],
   sameAs: [IG],
@@ -56,13 +56,13 @@ const jsonld = {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': 'WebSite', '@id': SITE + '#site', url: SITE, name: 'HappyArtForYou', inLanguage: 'en-CA', publisher: { '@id': SITE + '#brand' } },
-    { '@type': 'Organization', '@id': SITE + '#brand', name: 'HappyArtForYou', alternateName: 'Happy Art For You', url: SITE, logo: SITE + 'apple-touch-icon.png', founder: { '@id': SITE + '#victoria' }, description: 'One-of-a-kind art by Victoria Rebecca Adam: floral paintings, sculptural pomegranates, Judaica, sculpture and ceramics.', areaServed: { '@type': 'AdministrativeArea', name: 'Ontario' }, sameAs: [IG] },
+    { '@type': 'Organization', '@id': SITE + '#brand', name: 'HappyArtForYou', alternateName: 'Happy Art For You', url: SITE, logo: SITE + 'apple-touch-icon.png', founder: { '@id': SITE + '#rebecca' }, description: 'One-of-a-kind art by Rebecca Adam: floral paintings, sculptural pomegranates, Judaica, sculpture and ceramics.', areaServed: { '@type': 'AdministrativeArea', name: 'Ontario' }, sameAs: [IG] },
     person,
     {
-      '@type': 'ItemList', name: 'Artwork by Victoria Rebecca Adam', numberOfItems: ART.length,
+      '@type': 'ItemList', name: 'Artwork by Rebecca Adam', numberOfItems: ART.length,
       itemListElement: ART.map((a, i) => ({
         '@type': 'ListItem', position: i + 1,
-        item: { '@type': 'VisualArtwork', name: a.title, image: SITE + `assets/img/art/${a.file}.webp`, description: a.alt, artform: a.medium, dateCreated: '2026', creator: { '@id': SITE + '#victoria' } },
+        item: { '@type': 'VisualArtwork', name: a.title, image: SITE + `assets/img/art/${a.file}.webp`, description: a.alt, artform: a.medium, dateCreated: '2026', creator: { '@id': SITE + '#rebecca' } },
       })),
     },
   ],

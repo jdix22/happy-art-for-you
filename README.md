@@ -1,6 +1,6 @@
 # HappyArtForYou — website prototype
 
-Client prototype for **HappyArtForYou**, the art of **Victoria Rebecca Adam**, a local Ontario artist and Registered Aesthetic Nurse (Instagram [@happpyart4u](https://www.instagram.com/happpyart4u/)).
+Client prototype for **HappyArtForYou**, the art of **Rebecca Adam**, a local Ontario artist and Registered Aesthetic Nurse (Instagram [@happpyart4u](https://www.instagram.com/happpyart4u/)).
 
 Live preview: https://jdix22.github.io/happy-art-for-you/
 
@@ -13,9 +13,9 @@ Everything on the page comes from her Instagram bio, her post captions and what 
 - **The work**: all 23 pieces (16 floral paintings cut out of her reels, plus pomegranates, Judaica, sculpture and ceramics). Filter by type, or **find a piece by colour** (ruby, ember, saffron, gold, rose, violet, cobalt, plaster white). Each piece shows its own colour palette. Tap a piece for a large view with her words, its palette, "Ask about this piece" and a link to the Instagram post.
 - **Featured piece**: *What We Carry Within*.
 - **Unlikely materials** (night gallery): dry-cleaning hangers → *The Argument and the Hug*, bark and brass → Hanukkiah, and more.
-- **A Hamsa's journey**: the Kingston Hamsa story. The constable's name from her caption is left out on purpose; add it back if Victoria wants it.
+- **A Hamsa's journey**: the Kingston Hamsa story. The constable's name from her caption is left out on purpose; add it back if Rebecca wants it.
 - **Pour a bloom**: a small painting toy. Pick a palette from one of her paintings and tap the canvas to pour a flower in those colours. "See the painting" opens the original.
-- **About Victoria**, **gifts by occasion**, **FAQ**, **enquiry form**, **Instagram feed**, footer.
+- **About Rebecca**, **gifts by occasion**, **FAQ**, **enquiry form**, **Instagram feed**, footer.
 
 ## Instagram feed (Behold)
 
@@ -37,7 +37,7 @@ She has no public email or phone, so the form copies the visitor's message and o
 - Run `node _src/build.mjs` to regenerate `index.html` (gallery, structured data, feed placeholders, palettes).
 - Images are in `assets/img/art/` (`name.webp` full size, `name-sm.webp` for the grid).
 
-## Questions for Victoria before launch
+## Questions for Rebecca before launch
 
 1. **Titles**: the 16 floral paintings use descriptive working titles ("Red Poppy on Midnight", "Violet Iris"…). What are their real names?
 2. **Sizes, media and prices**: canvas sizes, paint/medium (acrylic? resin pour?) and prices or price ranges for each piece. Which are still available, and which are sold?
@@ -45,7 +45,7 @@ She has no public email or phone, so the form copies the visitor's message and o
 4. **Location**: which city or area of Ontario she'd like listed. A city helps Google and AI search a lot.
 5. **Commissions**: does she take custom pieces (e.g. Hamsas, Hanukkiahs, pomegranates as gifts)?
 6. **Shipping / pickup**: does she ship, deliver locally, or is it pickup only?
-7. **Name**: is "Victoria Rebecca Adam" the name she wants on the site? Should Beauty Medical Clinic be named in her bio, or just "Registered Aesthetic Nurse"?
+7. **Clinic**: the site shows her as "Rebecca Adam" (decided 2026-11-07). Should Beauty Medical Clinic be named in her bio, or just "Registered Aesthetic Nurse"?
 8. **The Hamsa story**: okay to tell it? Name the constable or keep it anonymous (as now)?
 9. **Group photo**: okay to show the June 2026 photo with fellow artists? (The others in it may need to agree.)
 10. **Domain**: does she want her own domain (e.g. happyartforyou.ca)?

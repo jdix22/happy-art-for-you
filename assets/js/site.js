@@ -5,7 +5,7 @@
 // Until it's set, the Instagram section shows the saved posts already in the page.
 const BEHOLD_FEED_ID = '';
 const FEED_COUNT = 8;
-// Victoria's email, once she confirms one. Empty = the form hands the message to Instagram DMs.
+// Rebecca's email, once she confirms one. Empty = the form hands the message to Instagram DMs.
 const CONTACT_EMAIL = '';
 // Optional form service (Formspree, Web3Forms, a Worker…). Takes priority over email when set.
 const FORM_ENDPOINT = '';
@@ -109,7 +109,7 @@ const form = $('[data-form]');
 function ask(title) {
   const sel = form.elements.piece;
   if ([...sel.options].some(o => o.value === title)) sel.value = title;
-  if (!form.elements.message.value) form.elements.message.value = `Hi Victoria, I'd love to know more about "${title}". `;
+  if (!form.elements.message.value) form.elements.message.value = `Hi Rebecca, I'd love to know more about "${title}". `;
 }
 document.addEventListener('click', e => {
   const a = e.target.closest('[data-ask]');
@@ -246,13 +246,13 @@ form.addEventListener('submit', async e => {
   const say = (msg, cls = '') => { st.textContent = msg; st.className = 'form-status ' + cls; };
   const data = { name: f.name.value.trim(), email: f.email.value.trim(), piece: f.piece.value, message: f.message.value.trim() };
   if (!data.name || !/^\S+@\S+\.\S+$/.test(data.email) || !data.message) return say('Please add your name, a valid email and a short message.', 'bad');
-  const text = `Hi Victoria, I'm ${data.name} (${data.email}).\nAbout: ${data.piece}\n\n${data.message}`;
+  const text = `Hi Rebecca, I'm ${data.name} (${data.email}).\nAbout: ${data.piece}\n\n${data.message}`;
   if (FORM_ENDPOINT) {
     say('Sending…');
     try {
       const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
       if (!r.ok) throw 0;
-      form.reset(); return say('Sent! Victoria will be in touch soon.', 'ok');
+      form.reset(); return say('Sent! Rebecca will be in touch soon.', 'ok');
     } catch (_) { /* fall through to email / Instagram */ }
   }
   if (CONTACT_EMAIL) {
@@ -262,7 +262,7 @@ form.addEventListener('submit', async e => {
   let copied = false;
   try { await navigator.clipboard.writeText(text); copied = true; } catch (_) {}
   window.open(`https://ig.me/m/${IG_HANDLE}`, '_blank', 'noopener');
-  say(copied ? 'Your message is copied. Instagram is opening: paste it into the chat with Victoria.' : `Instagram is opening. Send Victoria your message at @${IG_HANDLE}.`, 'ok');
+  say(copied ? 'Your message is copied. Instagram is opening: paste it into the chat with Rebecca.' : `Instagram is opening. Send Rebecca your message at @${IG_HANDLE}.`, 'ok');
 });
 
 const yr = $('[data-year]');

@@ -1,5 +1,5 @@
-// Every artwork on the site. Facts come only from Victoria's Instagram (captions, bio, what is visible).
-// Floral titles are descriptive working titles until Victoria supplies her own (see README).
+// Every artwork on the site. Facts come only from Rebecca's Instagram (captions, bio, what is visible).
+// Floral titles are descriptive working titles until Rebecca supplies her own (see README).
 // size: [width, height] of the full WebP in assets/img/art/. kind: 'canvas' (framed painting) or 'object' (photo of a 3D piece).
 
 export const SITE = 'https://jdix22.github.io/happy-art-for-you/';
