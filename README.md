@@ -2,7 +2,7 @@
 
 Client prototype for **HappyArtForYou**, the art of **Rebecca Adam**, a local Ontario artist and Registered Aesthetic Nurse (Instagram [@happpyart4u](https://www.instagram.com/happpyart4u/)).
 
-Live preview: https://jdix22.github.io/happy-art-for-you/
+Live: https://happyart.ca (Cloudflare Worker "happy-art-for-you"; redeploy with `node _src/build.mjs` then `wrangler deploy` from this folder; a git push only updates the GitHub Pages copy at https://jdix22.github.io/happy-art-for-you/, whose canonical points at happyart.ca).
 
 Everything on the page comes from her Instagram bio, her post captions and what is visible in her photos and reels. Nothing is invented: no prices, sizes, reviews, awards or years in business.
 
@@ -48,8 +48,8 @@ She has no public email or phone, so the form copies the visitor's message and o
 7. **Clinic**: the site shows her as "Rebecca Adam" (decided 2026-11-07). Should Beauty Medical Clinic be named in her bio, or just "Registered Aesthetic Nurse"?
 8. **The Hamsa story**: okay to tell it? Name the constable or keep it anonymous (as now)?
 9. **Group photo**: okay to show the June 2026 photo with fellow artists? (The others in it may need to agree.)
-10. **Domain**: does she want her own domain (e.g. happyartforyou.ca)?
+10. **Domain**: done, happyart.ca (registered 2026-11-13).
 
-The page is set to `noindex` until she approves it and it moves to her own domain.
+Launched on happyart.ca 2026-11-13: noindex removed (kept on 404). IndexNow key file at the root.
 
 Website designed by [jdix.ca](https://jdix.ca).

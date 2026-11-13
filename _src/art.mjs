@@ -2,7 +2,7 @@
 // Floral titles are descriptive working titles until Rebecca supplies her own (see README).
 // size: [width, height] of the full WebP in assets/img/art/. kind: 'canvas' (framed painting) or 'object' (photo of a 3D piece).
 
-export const SITE = 'https://jdix22.github.io/happy-art-for-you/';
+export const SITE = 'https://happyart.ca/';
 export const IG = 'https://www.instagram.com/happpyart4u/';
 
 export const COLLECTION_QUOTES = {

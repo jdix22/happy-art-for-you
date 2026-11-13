@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jdix22.github.io/happy-art-for-you/sitemap.xml
+Sitemap: https://happyart.ca/sitemap.xml
