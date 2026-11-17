@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '5';
+const V = '6';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -47,7 +47,7 @@ const igFeed = IG_POSTS.map(p => {
 const person = {
   '@type': 'Person', '@id': SITE + '#rebecca', name: 'Rebecca Adam', jobTitle: 'Artist',
   description: 'Local Ontario artist and Registered Aesthetic Nurse creating one-of-a-kind art from clay, resin, wood and mosaic.',
-  url: SITE, image: SITE + 'assets/img/art/rebecca-adam-with-fellow-artists.webp',
+  url: SITE, image: SITE + 'assets/img/art/rebecca-adam-portrait.webp',
   address: { '@type': 'PostalAddress', addressRegion: 'ON', addressCountry: 'CA' },
   knowsAbout: ['Floral painting', 'Mosaic', 'Ceramics', 'Resin art', 'Wood art', 'Mixed media sculpture', 'Judaica'],
   sameAs: [IG],

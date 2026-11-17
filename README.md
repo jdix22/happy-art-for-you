@@ -47,7 +47,7 @@ She has no public email or phone, so the form copies the visitor's message and o
 6. **Shipping / pickup**: does she ship, deliver locally, or is it pickup only?
 7. **Clinic**: the site shows her as "Rebecca Adam" (decided 2026-11-07). Should Beauty Medical Clinic be named in her bio, or just "Registered Aesthetic Nurse"?
 8. **The Hamsa story**: okay to tell it? Name the constable or keep it anonymous (as now)?
-9. **Group photo**: okay to show the June 2026 photo with fellow artists? (The others in it may need to agree.)
+9. **Group photo**: no longer used; the About section shows her portrait (sent 2026-11-16).
 10. **Domain**: done, happyart.ca (registered 2026-11-13).
 
 Launched on happyart.ca 2026-11-13: noindex removed (kept on 404). IndexNow key file at the root.
