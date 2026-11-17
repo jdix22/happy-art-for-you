@@ -80,7 +80,7 @@ $$('[data-colour-filter] .swatch').forEach(b => b.addEventListener('click', () =
 
 /* ---------- lightbox ---------- */
 const lb = $('[data-lightbox]');
-const details = pieces.map(p => JSON.parse($('template', p).innerHTML));
+const details = pieces.map(p => JSON.parse($('template', p).content.textContent));
 let current = 0;
 function show(i) {
   current = i;
@@ -98,6 +98,9 @@ function openPiece(i) { show(i); if (typeof lb.showModal === 'function') lb.show
 const visibleIdx = () => pieces.map((p, i) => p.hidden ? -1 : i).filter(i => i >= 0);
 function step(dir) { const v = visibleIdx(); if (!v.length) return; const k = v.indexOf(current); show(v[(k + dir + v.length) % v.length]); }
 $$('[data-open]').forEach(b => b.addEventListener('click', () => openPiece(+b.dataset.open)));
+// "Unlikely materials" cards open the same viewer (the whole card is clickable via its title button)
+$$('[data-open-file]').forEach(b => b.addEventListener('click', () => { const i = details.findIndex(d => d.file === b.dataset.openFile); if (i >= 0) openPiece(i); }));
+$$('.transform').forEach(li => li.addEventListener('click', e => { const b = li.querySelector('[data-open-file]'); if (b && !e.target.closest('[data-open-file]')) b.click(); }));
 $('[data-lb-close]', lb).addEventListener('click', () => lb.close());
 $('[data-lb-prev]', lb).addEventListener('click', () => step(-1));
 $('[data-lb-next]', lb).addEventListener('click', () => step(1));

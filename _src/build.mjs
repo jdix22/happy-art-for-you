@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '4';
+const V = '5';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -70,7 +70,7 @@ const jsonld = {
 
 // palettes for the "Pour a bloom" studio: the florals only
 const BG = {
-  'red-poppy-on-midnight-teal': '#0d2532', 'cobalt-bloom-on-lemon': '#f5e47c', 'magenta-bloom-on-blush': '#f6c6dc', 'violet-iris-on-lilac': '#c8a6ea',
+  'red-poppy-on-midnight-teal': '#0d2532', 'cobalt-bloom-on-lemon': '#f5e47c', 'magenta-bloom-on-blush': '#f6c6dc',
   'sunburst-bloom-on-red': '#d8261c', 'golden-forest': '#3a1606', 'lilac-bloom-gold-leaf-on-pink': '#ebcbe0', 'ember-bloom-on-gold': '#8a6a24',
   'blue-garden-with-gold': '#c9a65c', 'saffron-bloom-on-violet': '#7a4bb0', 'magenta-poppies-on-silver-leaf': '#d3d7dc', 'violet-blooms-on-cobalt': '#1a1ca8',
   'red-poppy-on-silver': '#9c9c98', 'four-sun-blooms': '#f6e9c8', 'violet-and-saffron-bloom-on-gold': '#6b4e1e',

@@ -39,7 +39,7 @@ She has no public email or phone, so the form copies the visitor's message and o
 
 ## Questions for Rebecca before launch
 
-1. **Titles**: the 16 floral paintings use descriptive working titles ("Red Poppy on Midnight", "Violet Iris"…). What are their real names?
+1. **Titles**: the 15 floral paintings use descriptive working titles ("Red Poppy on Midnight", "Magenta Poppies"…). What are their real names?
 2. **Sizes, media and prices**: canvas sizes, paint/medium (acrylic? resin pour?) and prices or price ranges for each piece. Which are still available, and which are sold?
 3. **Contact**: an email (and phone, if she wants one) for enquiries.
 4. **Location**: which city or area of Ontario she'd like listed. A city helps Google and AI search a lot.
