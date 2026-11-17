@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { ART as RAW_ART, TYPES, COLOURS, IG_POSTS, SITE, IG, COLLECTION_QUOTES, HAMSA_COLLECTION } from './art.mjs';
+import { ART as RAW_ART, TYPES, COLOURS, IG_POSTS, SITE, IG, COLLECTION_QUOTES, HAMSA_COLLECTION, POM_COLLECTION } from './art.mjs';
 
 // Gallery order: weave the objects in between the paintings so every column mixes both.
 const ART = (() => {
@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '21';
+const V = '22';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -80,7 +80,7 @@ const BG = {
 const pal = ART.filter(a => a.type === 'florals' && a.kind === 'canvas').map(a => ({ t: a.title, f: a.file, p: a.palette, bg: BG[a.file] || '#f5efe6', i: ART.indexOf(a) }));
 
 let html = readFileSync(join(here, 'index.src.html'), 'utf8');
-const rep = { SITE, IG, V, JSONLD: JSON.stringify(jsonld, null, 1), GALLERY: gallery, TYPE_CHIPS: typeChips, COLOUR_CHIPS: colourChips, OPTIONS: options, IGFEED: igFeed, COUNT: countWord(ART.length), PALETTES: JSON.stringify(pal), HAMSA_TITLE: esc(HAMSA_COLLECTION.title), HAMSA_TEXT: esc(HAMSA_COLLECTION.text) };
+const rep = { SITE, IG, V, JSONLD: JSON.stringify(jsonld, null, 1), GALLERY: gallery, TYPE_CHIPS: typeChips, COLOUR_CHIPS: colourChips, OPTIONS: options, IGFEED: igFeed, COUNT: countWord(ART.length), PALETTES: JSON.stringify(pal), HAMSA_TITLE: esc(HAMSA_COLLECTION.title), HAMSA_TEXT: esc(HAMSA_COLLECTION.text), POMC_TITLE: esc(POM_COLLECTION.title), POMC_TEXT: esc(POM_COLLECTION.text) };
 html = html.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in rep ? rep[k] : m));
 writeFileSync(join(root, 'index.html'), html);
 console.log('built index.html with', ART.length, 'pieces');
