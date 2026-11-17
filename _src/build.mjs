@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '18';
+const V = '19';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -26,11 +26,11 @@ const gallery = ART.map((a, i) => {
   const words_ = a.words || COLLECTION_QUOTES[a.type] || '';
   return `<figure class="piece ${a.kind}" data-type="${[a.type, ...(a.also || [])].join(' ')}" data-colours="${a.colours.join(' ')}" data-i="${i}"${a.pin ? ' data-pin' : ''}>
       <button class="piece-open" type="button" data-open="${i}" aria-label="View ${esc(a.title)} larger">
-        <span class="piece-frame"><img src="assets/img/art/${a.file}-sm.webp" width="${w}" height="${h}" loading="lazy" alt="${esc(a.alt)}"></span>
+        <span class="piece-frame"><img src="assets/img/art/${a.file}-sm.webp" width="${w}" height="${h}" loading="lazy" alt="${esc(a.alt)}">${a.more ? `<span class="piece-views">${a.more.length + 1} photos</span>` : ''}</span>
       </button>
       <figcaption><span class="piece-title">${esc(a.title)}</span><span class="piece-meta">${a.type === 'florals' ? 'Original painting' : esc(a.medium)}</span>
         <span class="piece-palette" aria-hidden="true">${a.palette.map(c => `<i style="--c:${c}"></i>`).join('')}</span></figcaption>
-      <template data-detail>${JSON.stringify({ title: a.title, file: a.file, w: a.size[0], h: a.size[1], alt: a.alt, meta: [a.medium, a.collection].filter(Boolean).join(' · '), words: words_, about: a.about || '', palette: a.palette, ig: IG + (a.ig ? a.ig + '/' : '') })}</template>
+      <template data-detail>${JSON.stringify({ title: a.title, file: a.file, w: a.size[0], h: a.size[1], alt: a.alt, meta: [a.medium, a.collection].filter(Boolean).join(' · '), words: words_, about: a.about || '', palette: a.palette, ig: IG + (a.ig ? a.ig + '/' : ''), ...(a.more ? { views: [[a.file, ...a.size], ...a.more] } : {}) })}</template>
     </figure>`;
 }).join('\n    ');
 

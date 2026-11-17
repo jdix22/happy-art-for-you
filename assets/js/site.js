@@ -124,7 +124,16 @@ function show(i) {
   $('[data-lb-palette]', lb).innerHTML = d.palette.map(c => `<i style="--c:${c}" title="${c}"></i>`).join('');
   $('[data-lb-ig]', lb).href = d.ig;
   $('[data-lb-ask]', lb).dataset.ask = d.title;
+  const vb = $('[data-lb-views]', lb), views = d.views || [];
+  vb.hidden = views.length < 2;
+  vb.innerHTML = views.map((v, k) => `<button type="button" data-view="${k}" aria-pressed="${k === 0}" aria-label="Photo ${k + 1} of ${views.length}"><img src="assets/img/art/${v[0]}-sm.webp" alt=""></button>`).join('');
 }
+$('[data-lb-views]', lb).addEventListener('click', e => {
+  const btn = e.target.closest('[data-view]'); if (!btn) return;
+  const v = details[current].views[+btn.dataset.view], img = $('[data-lb-img]', lb);
+  img.src = `assets/img/art/${v[0]}.webp`; img.width = v[1]; img.height = v[2];
+  $$('[data-view]', lb).forEach(x => x.setAttribute('aria-pressed', x === btn));
+});
 function openPiece(i) { show(i); if (typeof lb.showModal === 'function') lb.showModal(); else lb.setAttribute('open', ''); }
 const visibleIdx = () => pieces.map((p, i) => p.hidden ? -1 : i).filter(i => i >= 0);
 function step(dir) { const v = visibleIdx(); if (!v.length) return; const k = v.indexOf(current); show(v[(k + dir + v.length) % v.length]); }
