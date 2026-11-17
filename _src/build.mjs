@@ -11,11 +11,13 @@ const ART = (() => {
   return out;
 })();
 
-const V = '15';
+const V = '16';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const words = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty', 'Twenty-one', 'Twenty-two', 'Twenty-three', 'Twenty-four', 'Twenty-five'];
+const ONES = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+const TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+const countWord = n => n < 20 ? ONES[n] : n < 100 ? TENS[Math.floor(n / 10)] + (n % 10 ? '-' + ONES[n % 10].toLowerCase() : '') : String(n);
 const typeName = Object.fromEntries(TYPES);
 const smW = ([w, h]) => w > 560 ? [560, Math.round(h * 560 / w / 2) * 2] : [w, h];
 
@@ -78,7 +80,7 @@ const BG = {
 const pal = ART.filter(a => a.type === 'florals' && a.kind === 'canvas').map(a => ({ t: a.title, f: a.file, p: a.palette, bg: BG[a.file] || '#f5efe6', i: ART.indexOf(a) }));
 
 let html = readFileSync(join(here, 'index.src.html'), 'utf8');
-const rep = { SITE, IG, V, JSONLD: JSON.stringify(jsonld, null, 1), GALLERY: gallery, TYPE_CHIPS: typeChips, COLOUR_CHIPS: colourChips, OPTIONS: options, IGFEED: igFeed, COUNT: words[ART.length], PALETTES: JSON.stringify(pal) };
+const rep = { SITE, IG, V, JSONLD: JSON.stringify(jsonld, null, 1), GALLERY: gallery, TYPE_CHIPS: typeChips, COLOUR_CHIPS: colourChips, OPTIONS: options, IGFEED: igFeed, COUNT: countWord(ART.length), PALETTES: JSON.stringify(pal) };
 html = html.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in rep ? rep[k] : m));
 writeFileSync(join(root, 'index.html'), html);
 console.log('built index.html with', ART.length, 'pieces');
