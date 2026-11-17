@@ -6,12 +6,12 @@ import { ART as RAW_ART, TYPES, COLOURS, IG_POSTS, SITE, IG, COLLECTION_QUOTES }
 
 // Gallery order: weave the objects in between the paintings so every column mixes both.
 const ART = (() => {
-  const fl = RAW_ART.filter(a => a.type === 'florals'), ob = RAW_ART.filter(a => a.type !== 'florals'), out = [];
+  const rest = RAW_ART.filter(a => !a.pin), fl = rest.filter(a => a.type === 'florals'), ob = rest.filter(a => a.type !== 'florals'), out = RAW_ART.filter(a => a.pin);
   while (fl.length || ob.length) { out.push(...fl.splice(0, 2)); if (ob.length) out.push(ob.shift()); }
   return out;
 })();
 
-const V = '6';
+const V = '8';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -28,7 +28,7 @@ const gallery = ART.map((a, i) => {
       </button>
       <figcaption><span class="piece-title">${esc(a.title)}</span><span class="piece-meta">${a.type === 'florals' ? 'Original painting' : esc(a.medium)}</span>
         <span class="piece-palette" aria-hidden="true">${a.palette.map(c => `<i style="--c:${c}"></i>`).join('')}</span></figcaption>
-      <template data-detail>${JSON.stringify({ title: a.title, file: a.file, w: a.size[0], h: a.size[1], alt: a.alt, meta: `${a.medium} · ${a.collection}`, words: words_, palette: a.palette, ig: IG + a.ig.replace(/^/, '') + '/' })}</template>
+      <template data-detail>${JSON.stringify({ title: a.title, file: a.file, w: a.size[0], h: a.size[1], alt: a.alt, meta: [a.medium, a.collection].filter(Boolean).join(' · '), words: words_, about: a.about || '', palette: a.palette, ig: IG + (a.ig ? a.ig + '/' : '') })}</template>
     </figure>`;
 }).join('\n    ');
 
@@ -62,7 +62,7 @@ const jsonld = {
       '@type': 'ItemList', name: 'Artwork by Rebecca Adam', numberOfItems: ART.length,
       itemListElement: ART.map((a, i) => ({
         '@type': 'ListItem', position: i + 1,
-        item: { '@type': 'VisualArtwork', name: a.title, image: SITE + `assets/img/art/${a.file}.webp`, description: a.alt, artform: a.medium, dateCreated: '2026', creator: { '@id': SITE + '#rebecca' } },
+        item: { '@type': 'VisualArtwork', name: a.title, image: SITE + `assets/img/art/${a.file}.webp`, description: a.about || a.alt, artform: a.medium, ...(/\d{4}/.test(a.collection) ? { dateCreated: a.collection.match(/\d{4}/)[0] } : {}), creator: { '@id': SITE + '#rebecca' } },
       })),
     },
   ],

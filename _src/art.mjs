@@ -22,6 +22,7 @@ export const COLOURS = [
 
 export const TYPES = [
   ['florals', 'Floral paintings'],
+  ['mosaic', 'Mosaic & mixed media'],
   ['pomegranates', 'Pomegranates'],
   ['judaica', 'Judaica'],
   ['sculpture', 'Sculpture & ceramics'],
@@ -29,6 +30,9 @@ export const TYPES = [
 
 const FL = { type: 'florals', kind: 'canvas', medium: 'Original painting', collection: 'Floral collection, 2026' };
 export const ART = [
+  // pin: shown first in the gallery. Title and description from Rebecca (2026-11-16); no Instagram post or year given.
+  { pin: true, type: 'mosaic', kind: 'object', file: 'happy-woman-mosaic-mirror', size: [848, 1149], title: 'Happy Woman', medium: 'Mosaic with mirror', collection: '', alt: 'Happy Woman: a mosaic of a woman in multicoloured stained glass on a textured gold background, with a round mirror for her face, in a gold frame', about: 'A joyful celebration of femininity, colour, and self-love. Created from vibrant mosaic pieces and playful details, this artwork radiates happiness and positive energy. The mirror invites every woman to see herself as part of the artwork — because every woman deserves to see herself beautiful, confident, and happy.', colours: ['gold', 'rose', 'cobalt'], palette: ['#c8942e', '#16120f', '#1f9d9b', '#c76b86', '#e8b27a'], ig: '' },
+
   { ...FL, file: 'cobalt-bloom-on-lemon', size: [582, 558], title: 'Cobalt Bloom on Lemon', alt: 'Painting of a cobalt and violet bloom with a yellow heart, poured across a lemon-yellow canvas', colours: ['cobalt', 'violet', 'saffron'], palette: ['#060e87', '#2831a8', '#6c76cd', '#f3d23c', '#f7ec9c'], ig: 'reel/DfOoNMdxr1Y' },
   { ...FL, file: 'magenta-bloom-on-blush', size: [540, 528], title: 'Magenta Bloom on Blush', alt: 'Painting of a ruffled magenta and coral flower on a soft blush-pink canvas', colours: ['rose', 'ruby'], palette: ['#a11a45', '#cf2962', '#dd479a', '#f27377', '#f6c6dc'], ig: 'reel/DfOoNMdxr1Y' },
   { ...FL, file: 'sunburst-bloom-on-red', size: [580, 576], title: 'Sunburst on Red', alt: 'Painting of a round cream, saffron and turquoise-streaked bloom on a bright red canvas', colours: ['ruby', 'saffron', 'ember'], palette: ['#e3281d', '#f26f3c', '#f4c84a', '#e8cc91', '#5ba3b0'], ig: 'reel/DfOoNMdxr1Y' },

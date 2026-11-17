@@ -156,6 +156,8 @@ main { overflow-x: clip; }
 .filter-status { flex-basis: 100%; margin: 0; font-size: .9rem; color: var(--ink-soft); min-height: 1.4em; }
 
 .gallery { width: var(--wrap); margin: 0 auto; columns: 4 240px; column-gap: clamp(1.4rem, 2.6vw, 2.2rem); }
+.gallery.is-masonry { columns: auto; display: flex; align-items: flex-start; gap: clamp(1.4rem, 2.6vw, 2.2rem); }
+.gcol { flex: 1 1 0; min-width: 0; }
 .piece { break-inside: avoid; margin: 0 0 clamp(2rem, 4vw, 3rem); animation: pieceIn .6s var(--ease) both; }
 .piece[hidden] { display: none; }
 @keyframes pieceIn { from { opacity: 0; transform: translateY(18px); } }
@@ -349,6 +351,7 @@ main { overflow-x: clip; }
 @media (max-width: 560px) {
   body { font-size: 1rem; }
   .gallery { columns: 2 140px; column-gap: 1rem; }
+  .gallery.is-masonry { gap: 1rem; }
   .piece figcaption { grid-template-columns: 1fr; }
   .piece-palette { grid-column: 1; grid-row: auto; height: 12px; margin-top: .4rem; width: 100%; }
   .piece-palette i { flex: 1; }

@@ -55,12 +55,39 @@ $$('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
 const pieces = $$('.piece');
 const state = { type: 'all', colour: null };
 const status = $('[data-filter-status]');
+
+/* Masonry that reads left to right: each visible piece goes into the shortest column, in gallery order,
+   so the first pieces sit along the top row and the last ones at the bottom. Without JS, CSS columns are the fallback. */
+const gallery = $('[data-gallery]');
+let galleryCols = 0;
+function layoutGallery(force) {
+  if (!gallery) return;
+  const w = gallery.clientWidth, k = w >= 1000 ? 4 : w >= 640 ? 3 : 2;
+  if (k === galleryCols && !force) return;
+  galleryCols = k;
+  const cols = Array.from({ length: k }, () => { const c = document.createElement('div'); c.className = 'gcol'; return c; });
+  const h = new Array(k).fill(0);
+  pieces.forEach(p => {
+    const img = p.querySelector('img');
+    const ratio = img && img.width ? img.height / img.width : 1;
+    if (p.hidden) { cols[k - 1].appendChild(p); return; }
+    const c = h.indexOf(Math.min(...h));
+    cols[c].appendChild(p);
+    h[c] += ratio + .45; // .45 ≈ caption height relative to column width
+  });
+  gallery.replaceChildren(...cols);
+  gallery.classList.add('is-masonry');
+}
+layoutGallery(true);
+addEventListener('resize', () => layoutGallery(false));
+
 function applyFilters() {
   let n = 0;
   pieces.forEach(p => {
     const ok = (state.type === 'all' || p.dataset.type === state.type) && (!state.colour || p.dataset.colours.split(' ').includes(state.colour));
     p.hidden = !ok; if (ok) n++;
   });
+  layoutGallery(true);
   const typeBtn = $(`[data-type="${state.type}"]`), colBtn = state.colour && $(`[data-colour="${state.colour}"]`);
   if (state.type === 'all' && !state.colour) { status.textContent = ''; return; }
   status.textContent = n
@@ -89,7 +116,7 @@ function show(i) {
   img.src = `assets/img/art/${d.file}.webp`; img.width = d.w; img.height = d.h; img.alt = d.alt;
   $('[data-lb-title]', lb).textContent = d.title;
   $('[data-lb-meta]', lb).textContent = d.meta;
-  $('[data-lb-words]', lb).textContent = d.words ? `“${d.words}”` : '';
+  $('[data-lb-words]', lb).textContent = d.about || (d.words ? `“${d.words}”` : '');
   $('[data-lb-palette]', lb).innerHTML = d.palette.map(c => `<i style="--c:${c}" title="${c}"></i>`).join('');
   $('[data-lb-ig]', lb).href = d.ig;
   $('[data-lb-ask]', lb).dataset.ask = d.title;
