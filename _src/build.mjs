@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '11';
+const V = '12';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
