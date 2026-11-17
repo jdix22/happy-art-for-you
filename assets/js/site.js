@@ -67,11 +67,14 @@ function layoutGallery(force) {
   galleryCols = k;
   const cols = Array.from({ length: k }, () => { const c = document.createElement('div'); c.className = 'gcol'; return c; });
   const h = new Array(k).fill(0);
+  let pinned = 0;
   pieces.forEach(p => {
     const img = p.querySelector('img');
     const ratio = img && img.width ? img.height / img.width : 1;
     if (p.hidden) { cols[k - 1].appendChild(p); return; }
-    const c = h.indexOf(Math.min(...h));
+    // Rebecca's featured pieces (data-pin) go strictly left to right, row by row, so their order never shuffles;
+    // everything after them fills the shortest column.
+    const c = p.hasAttribute('data-pin') ? pinned++ % k : h.indexOf(Math.min(...h));
     cols[c].appendChild(p);
     h[c] += ratio + .45; // .45 ≈ caption height relative to column width
   });

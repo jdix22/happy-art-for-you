@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '12';
+const V = '15';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -22,7 +22,7 @@ const smW = ([w, h]) => w > 560 ? [560, Math.round(h * 560 / w / 2) * 2] : [w, h
 const gallery = ART.map((a, i) => {
   const [w, h] = smW(a.size);
   const words_ = a.words || COLLECTION_QUOTES[a.type] || '';
-  return `<figure class="piece ${a.kind}" data-type="${a.type}" data-colours="${a.colours.join(' ')}" data-i="${i}">
+  return `<figure class="piece ${a.kind}" data-type="${a.type}" data-colours="${a.colours.join(' ')}" data-i="${i}"${a.pin ? ' data-pin' : ''}>
       <button class="piece-open" type="button" data-open="${i}" aria-label="View ${esc(a.title)} larger">
         <span class="piece-frame"><img src="assets/img/art/${a.file}-sm.webp" width="${w}" height="${h}" loading="lazy" alt="${esc(a.alt)}"></span>
       </button>
