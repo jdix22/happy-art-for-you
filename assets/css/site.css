@@ -153,6 +153,10 @@ main { overflow-x: clip; }
 .swatch[data-colour="gold"] { background: radial-gradient(circle at 30% 30%, #f8e6a6, var(--c) 55%, #8f6a22); }
 .swatch:hover { transform: scale(1.12); }
 .swatch[aria-pressed="true"] { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12), 0 0 0 3px var(--paper), 0 0 0 5px var(--ink); }
+.collection-intro { width: var(--wrap); margin: -1rem auto 2.4rem; padding: 1.4rem 1.6rem; border-left: 3px solid var(--honey); background: color-mix(in srgb, var(--honey) 14%, transparent); border-radius: 0 12px 12px 0; }
+.collection-intro[hidden] { display: none; }
+.collection-intro h3 { margin: 0 0 .5rem; font-size: 1.3rem; }
+.collection-intro p { margin: 0; max-width: 62ch; line-height: 1.6; }
 .filter-status { flex-basis: 100%; margin: 0; font-size: .9rem; color: var(--ink-soft); min-height: 1.4em; }
 
 .gallery { width: var(--wrap); margin: 0 auto; columns: 4 240px; column-gap: clamp(1.4rem, 2.6vw, 2.2rem); }

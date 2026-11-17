@@ -87,10 +87,11 @@ addEventListener('resize', () => layoutGallery(false));
 function applyFilters() {
   let n = 0;
   pieces.forEach(p => {
-    const ok = (state.type === 'all' || p.dataset.type === state.type) && (!state.colour || p.dataset.colours.split(' ').includes(state.colour));
+    const ok = (state.type === 'all' || p.dataset.type.split(' ').includes(state.type)) && (!state.colour || p.dataset.colours.split(' ').includes(state.colour));
     p.hidden = !ok; if (ok) n++;
   });
   layoutGallery(true);
+  document.querySelectorAll('[data-collection-intro]').forEach(el => { el.hidden = el.dataset.collectionIntro !== state.type; });
   const typeBtn = $(`[data-type="${state.type}"]`), colBtn = state.colour && $(`[data-colour="${state.colour}"]`);
   if (state.type === 'all' && !state.colour) { status.textContent = ''; return; }
   status.textContent = n

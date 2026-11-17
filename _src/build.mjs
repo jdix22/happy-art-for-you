@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { ART as RAW_ART, TYPES, COLOURS, IG_POSTS, SITE, IG, COLLECTION_QUOTES } from './art.mjs';
+import { ART as RAW_ART, TYPES, COLOURS, IG_POSTS, SITE, IG, COLLECTION_QUOTES, HAMSA_COLLECTION } from './art.mjs';
 
 // Gallery order: weave the objects in between the paintings so every column mixes both.
 const ART = (() => {
@@ -11,7 +11,7 @@ const ART = (() => {
   return out;
 })();
 
-const V = '16';
+const V = '17';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -24,7 +24,7 @@ const smW = ([w, h]) => w > 560 ? [560, Math.round(h * 560 / w / 2) * 2] : [w, h
 const gallery = ART.map((a, i) => {
   const [w, h] = smW(a.size);
   const words_ = a.words || COLLECTION_QUOTES[a.type] || '';
-  return `<figure class="piece ${a.kind}" data-type="${a.type}" data-colours="${a.colours.join(' ')}" data-i="${i}"${a.pin ? ' data-pin' : ''}>
+  return `<figure class="piece ${a.kind}" data-type="${[a.type, ...(a.also || [])].join(' ')}" data-colours="${a.colours.join(' ')}" data-i="${i}"${a.pin ? ' data-pin' : ''}>
       <button class="piece-open" type="button" data-open="${i}" aria-label="View ${esc(a.title)} larger">
         <span class="piece-frame"><img src="assets/img/art/${a.file}-sm.webp" width="${w}" height="${h}" loading="lazy" alt="${esc(a.alt)}"></span>
       </button>
@@ -80,7 +80,7 @@ const BG = {
 const pal = ART.filter(a => a.type === 'florals' && a.kind === 'canvas').map(a => ({ t: a.title, f: a.file, p: a.palette, bg: BG[a.file] || '#f5efe6', i: ART.indexOf(a) }));
 
 let html = readFileSync(join(here, 'index.src.html'), 'utf8');
-const rep = { SITE, IG, V, JSONLD: JSON.stringify(jsonld, null, 1), GALLERY: gallery, TYPE_CHIPS: typeChips, COLOUR_CHIPS: colourChips, OPTIONS: options, IGFEED: igFeed, COUNT: countWord(ART.length), PALETTES: JSON.stringify(pal) };
+const rep = { SITE, IG, V, JSONLD: JSON.stringify(jsonld, null, 1), GALLERY: gallery, TYPE_CHIPS: typeChips, COLOUR_CHIPS: colourChips, OPTIONS: options, IGFEED: igFeed, COUNT: countWord(ART.length), PALETTES: JSON.stringify(pal), HAMSA_TITLE: esc(HAMSA_COLLECTION.title), HAMSA_TEXT: esc(HAMSA_COLLECTION.text) };
 html = html.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in rep ? rep[k] : m));
 writeFileSync(join(root, 'index.html'), html);
 console.log('built index.html with', ART.length, 'pieces');
