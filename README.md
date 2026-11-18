@@ -13,7 +13,7 @@ Everything on the page comes from her Instagram bio, her post captions and what 
 - **The work**: all 23 pieces (16 floral paintings cut out of her reels, plus pomegranates, Judaica, sculpture and ceramics). Filter by type, or **find a piece by colour** (ruby, ember, saffron, gold, rose, violet, cobalt, plaster white). Each piece shows its own colour palette. Tap a piece for a large view with her words, its palette, "Ask about this piece" and a link to the Instagram post.
 - **Featured piece**: *What We Carry Within*.
 - **Unlikely materials** (night gallery): dry-cleaning hangers → *The Argument and the Hug*, bark and brass → Hanukkiah, and more.
-- **A Hamsa's journey**: the Kingston Hamsa story. The constable's name from her caption is left out on purpose; add it back if Rebecca wants it.
+- **Colourful Blessings**: feature section for her Hamsa, with her own caption (2026-11-17 replaced the earlier Kingston story at her request).
 - **Pour a bloom**: a small painting toy. Pick a palette from one of her paintings and tap the canvas to pour a flower in those colours. "See the painting" opens the original.
 - **About Rebecca**, **gifts by occasion**, **FAQ**, **enquiry form**, **Instagram feed**, footer.
 
