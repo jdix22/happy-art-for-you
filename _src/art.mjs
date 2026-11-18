@@ -100,7 +100,7 @@ export const IG_POSTS = [
   { ig: 'reel/DfOoNMdxr1Y', img: 'red-poppy-on-midnight-teal', date: '2026-11-01', cap: 'My latest floral collection, no watering required! Original artworks available for purchase.' },
   { ig: 'reel/DfEYlJSxISe', img: 'red-poppy-on-silver', date: '2026-10-28', cap: 'A little more colour in my world… flowers that never fade.' },
   { ig: 'reel/DeI9fU4x-6H', img: 'blue-garden-with-gold', date: '2026-10-05', cap: 'A little dance of colours that unexpectedly turns into flowers.' },
-  { ig: 'p/Dd5Eqd_xvyH', img: 'hamsa-with-pomegranate-heart', date: '2026-09-29', cap: 'This Hamsa made her way all the way to Kingston.' },
+  { ig: 'p/Dd5Eqd_xvyH', img: 'hamsa-with-pomegranate-heart', date: '2026-09-29', cap: 'Colourful Blessings, an unusual handcrafted Hamsa with a red pomegranate at its centre.' },
   { ig: 'p/Ddsa3kiRZug', img: 'what-we-carry-within-pomegranates', date: '2026-09-24', cap: 'What We Carry Within. White on the outside, deep red and gold within.' },
   { ig: 'p/Dcxp7-NxDfS', img: 'hanukkiah-wood-bark-pomegranate', date: '2026-09-02', cap: 'A handcrafted Hanukkiah from natural wood bark, with a pomegranate at its heart.' },
   { ig: 'p/DcxobNdx9zD', img: 'pomegranate-slices-ruby-seeds', date: '2026-09-01', cap: 'Elegant slices of pomegranate, a symbol of abundance, beauty and new beginnings.' },
